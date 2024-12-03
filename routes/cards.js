@@ -1,16 +1,10 @@
 const router = require('express').Router();
-const cards = require('../data/cards.json');
+const { getCards, createCard, deleteCard } = require('../controllers/cards');
 
-router.get('/', (req, res) => {
-  res.send(cards);
-});
+router.get('/', getCards);
 
-router.get('/:id', (req, res) => {
-  const card = cards.find((eachCard) => eachCard._id === req.params.id);
-  if (!card) {
-    res.status(404).send({ message: 'Recurso requisitado não encontrado' });
-    return;
-  }
-  res.send(card);
-});
+router.post('/', createCard);
+
+router.delete('/:id', deleteCard);
+
 module.exports = router;

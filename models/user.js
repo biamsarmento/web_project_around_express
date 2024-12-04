@@ -5,24 +5,24 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 2,
-    maxlength: 30
+    maxlength: 30,
   },
   about: {
     type: String,
     required: true,
     minlength: 2,
-    maxlength: 30
+    maxlength: 30,
   },
   avatar: {
     type: String,
     validate: {
-      validator: function(v) {
+      validator(v) {
         return /^(http:\/\/|https:\/\/)(www\.)?[\w\-.~:/?%#[\]@!$&'()*+,;=]+#?$/.test(v);
       },
-      message: props => `${props.value} Esse link não é válido!`
+      message: (props) => `${props.value} Esse link não é válido!`,
     },
-    required: [true, "Link para o avatar exigido!"]
-  }
+    required: [true, 'Link para o avatar exigido!'],
+  },
 });
 
 module.exports = mongoose.model('user', userSchema);

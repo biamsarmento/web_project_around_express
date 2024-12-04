@@ -5,17 +5,17 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: true,
     minlength: 2,
-    maxlength: 30
+    maxlength: 30,
   },
   link: {
     type: String,
     validate: {
-      validator: function(v) {
+      validator(v) {
         return /^(http:\/\/|https:\/\/)(www\.)?[\w\-.~:/?%#[\]@!$&'()*+,;=]+#?$/.test(v);
       },
-      message: props => `${props.value} Esse link não é válido!`
+      message: (props) => `${props.value} Esse link não é válido!`,
     },
-    required: [true, "Link para a imagem exigido!"]
+    required: [true, 'Link para a imagem exigido!'],
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
@@ -30,7 +30,7 @@ const cardSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-  }
+  },
 });
 
 module.exports = mongoose.model('card', cardSchema);

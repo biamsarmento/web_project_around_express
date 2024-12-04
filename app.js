@@ -9,8 +9,6 @@ const { PORT = 3000 } = process.env;
 mongoose.connect('mongodb://localhost:27017/aroundb', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  // useCreateIndex: true,
-  // useFindAndModify: false
 });
 
 app.use(express.json());
